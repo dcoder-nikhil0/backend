@@ -2,7 +2,7 @@
 FROM python:3.9-slim
 
 # Set working directory inside container
-WORKDIR /app
+WORKDIR /server
 
 # Copy requirements.txt and install dependencies
 COPY requirements.txt .
