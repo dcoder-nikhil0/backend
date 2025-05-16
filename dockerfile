@@ -1,19 +1,18 @@
-# Use official Python slim image as base
-FROM python:3.9-slim
+# Use an official Python runtime as a parent image
+FROM python:3.10-slim
 
-# Set working directory inside container
-WORKDIR /backend/server
+# Set the working directory inside the container
+WORKDIR /app
 
-# Copy requirements.txt and install dependencies
+# Copy requirement files and install dependencies
 COPY requirements.txt .
-
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy all project files to container
+# Copy the full project into the container
 COPY . .
 
-# Expose Flask port
-EXPOSE 5000
+# Change to the 'server' directory where app.py is located
+WORKDIR /app/server
 
-# Run the app with host=0.0.0.0 for external access
+# Run the app
 CMD ["python", "app.py"]
